@@ -1,0 +1,3 @@
+rec/*
+/target/
+**/*.rs.bk
