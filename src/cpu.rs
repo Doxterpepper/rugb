@@ -14,14 +14,14 @@ impl Cpu {
         }
     }
 
-    pub fn run (&mut self, prog: Vec<u8>) {
+    pub fn run(&mut self, prog: Vec<u8>) {
         while self.pc < prog.len() {
             let instruction = match prog[self.pc] {
                 0x00 => {
                     self.nop();
                     String::from("NOP")
-                },
-                _ => { 
+                }
+                _ => {
                     self.nop();
                     String::from("unknown")
                 }
@@ -29,9 +29,7 @@ impl Cpu {
 
             println!(
                 "{0}\t{1:x}\t{2}",
-                self.clock_ticks,
-                prog[self.pc],
-                instruction
+                self.clock_ticks, prog[self.pc], instruction
             );
 
             self.clock_ticks += 1;
