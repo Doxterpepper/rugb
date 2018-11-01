@@ -1,8 +1,9 @@
+
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 
-mod cartridge;
+mod cpu;
 
 /// Read a cartridge file and return the entire file as a 'Vec<u8'.
 fn read_cartridge(file: String) -> Vec<u8> {
@@ -22,6 +23,7 @@ fn main() {
       println!("Please specify a file");
   } else {
       let binary_data = read_cartridge(args.remove(1));
-      println!("{0}", cartridge::read_title(binary_data));
+      let mut cpu = cpu::Cpu::new();
+      cpu.run(binary_data);
   }
 }
