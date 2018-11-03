@@ -1,4 +1,3 @@
-
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
@@ -15,15 +14,15 @@ fn read_cartridge(file: String) -> Vec<u8> {
 }
 
 fn main() {
-  let mut args: Vec<String> = env::args().collect();
+    let mut args: Vec<String> = env::args().collect();
 
-  // eventually this will need to be changed to an actual
-  // command line parser
-  if args.len() < 2 {
-      println!("Please specify a file");
-  } else {
-      let binary_data = read_cartridge(args.remove(1));
-      let mut cpu = cpu::Cpu::new();
-      cpu.run(binary_data);
-  }
+    // eventually this will need to be changed to an actual
+    // command line parser
+    if args.len() < 2 {
+        println!("Please specify a file");
+    } else {
+        let binary_data = read_cartridge(args.remove(1));
+        let mut cpu = cpu::Cpu::new();
+        cpu.run(binary_data);
+    }
 }
