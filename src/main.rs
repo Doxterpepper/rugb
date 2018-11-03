@@ -22,7 +22,7 @@ fn main() {
         println!("Please specify a file");
     } else {
         let binary_data = read_cartridge(args.remove(1));
-        let mut cpu = cpu::Cpu::new();
-        cpu.run(binary_data);
+        let cpu = cpu::Cpu::new(binary_data, 100);
+        cpu.execute();
     }
 }
